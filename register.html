@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — Экспертные решения</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+    <!-- ===== ШАПКА ===== -->
+    <div class="shapka">
+        <div class="container">
+            <a href="index.html" class="logo">Экспертные<span> Решения</span></a>
+            
+            <!-- Мобильное меню -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="links" id="mobileMenu">
+                <ul class="linki">
+                    <li class="linki_item"><a href="catalog.html" class="linki_txt">Услуги</a></li>
+                    <li class="linki_item"><a href="index.html#info" class="linki_txt">О компании</a></li>
+                    <li class="linki_item"><a href="#" class="linki_txt">Отзывы</a></li>
+                    <li class="linki_item"><a href="#contact" class="linki_txt">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="buttons">
+                <button class="theme" id="themeToggle">
+                    <svg class="icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="icon-moon" style="display: none;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <a href="login.html" class="join">Войти</a>
+                <button class="podat podatu">Подать заявку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== СТРАНИЦА РЕГИСТРАЦИИ ===== -->
+    <div class="register_page">
+        <div class="register_card">
+            <h1 class="register_title">Регистрация</h1>
+
+            <form class="register_form" action="#" method="POST">
+                <div class="register_field">
+                    <label class="register_label" for="email">E-mail</label>
+                    <input class="register_input" type="email" id="email" name="email" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="register_field">
+                    <label class="register_label" for="lastname">Фамилия</label>
+                    <input class="register_input" type="text" id="lastname" name="lastname" placeholder="Иванов" required>
+                </div>
+
+                <div class="register_field">
+                    <label class="register_label" for="firstname">Имя</label>
+                    <input class="register_input" type="text" id="firstname" name="firstname" placeholder="Иван" required>
+                </div>
+
+                <div class="register_field">
+                    <label class="register_label" for="birthdate">Дата рождения</label>
+                    <input class="register_input" type="date" id="birthdate" name="birthdate" required>
+                </div>
+
+                <div class="register_field">
+                    <label class="register_label" for="phone">Номер телефона</label>
+                    <input class="register_input" type="tel" id="phone" name="phone" placeholder="+7 (999) 999-99-99" required>
+                </div>
+
+                <div class="register_field">
+                    <label class="register_label" for="password">Пароль</label>
+                    <input class="register_input" type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="register_field">
+                    <label class="register_label" for="password_confirm">Повторите пароль</label>
+                    <input class="register_input" type="password" id="password_confirm" name="password_confirm" placeholder="••••••••" required>
+                </div>
+
+                <div class="register_checkbox_field">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Я согласен с <a href="#" class="register_link">политикой конфиденциальности</a></label>
+                </div>
+
+                <button type="submit" class="register_btn">Зарегистрироваться</button>
+
+                <div class="register_divider"></div>
+
+                <p class="register_login_text">Есть аккаунт?</p>
+                <a href="login.html" class="register_login_btn">Войти</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_top">
+                <div class="footer_column">
+                    <h2 class="footer_h2">Экспертные Решения</h2>
+                    <p class="footer_p">Независимая экспертиза и оценка имущества.<br>
+                    Работаем с 2011 года. Все эксперты сертифицированы и имеют большой практический опыт.</p>
+                    <p class="footer_p">г. Минусинск, ул. Абаканская, д. 39, офис 88, 662603</p>
+                    <p class="footer_p">+7(952) 749-56-88</p>
+                    <p class="footer_p"><a href="mailto:expert_magera@mail.ru" class="footer_link">expert_magera@mail.ru</a></p>
+                </div>
+                <div class="footer_column">
+                    <h2 class="footer_h2">Услуги</h2>
+                    <p class="footer_p"><a href="#" class="footer_link">Оценка недвижимости</a></p>
+                    <p class="footer_p"><a href="#" class="footer_link">Автотехническая экспертиза</a></p>
+                    <p class="footer_p"><a href="#" class="footer_link">Судебная экспертиза</a></p>
+                    <p class="footer_p"><a href="#" class="footer_link">Оценка имущества</a></p>
+                </div>
+                <div class="footer_column">
+                    <h2 class="footer_h2">Информация</h2>
+                    <p class="footer_p"><a href="#" class="footer_link">О компании</a></p>
+                    <p class="footer_p"><a href="#" class="footer_link">Лицензии</a></p>
+                    <p class="footer_p"><a href="#" class="footer_link">Цены</a></p>
+                    <p class="footer_p"><a href="#" class="footer_link">Вопросы и ответы</a></p>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <p class="footer_p">© 2026 ЭкспертныеРешения. Все права защищены.</p>
+                <div class="footer_group">
+                    <a href="#" class="footer_link">Политика конфиденциальности</a>
+                    <a href="#" class="footer_link">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+    <div class="modal" id="applicationModal">
+        <div class="modal_content">
+            <button class="modal_close" id="modalClose">&times;</button>
+            <h2 class="modal_title">Подать заявку</h2>
+            <form class="modal_form" id="applicationForm">
+                <div class="modal_field">
+                    <label class="modal_label" for="service">Выберите услугу</label>
+                    <select class="modal_select" id="service" name="service" required>
+                        <option value="" disabled selected>Выберите из списка</option>
+                        <option value="tovar">Товароведческая</option>
+                        <option value="pozhar">Пожаро-техническая</option>
+                        <option value="pocherk">Почерковедческая</option>
+                        <option value="priemka">Приёмка квартир</option>
+                        <option value="avto">Автотехническая</option>
+                        <option value="zemle">Землеустроительная</option>
+                        <option value="econom">Экономическая</option>
+                        <option value="inzhener">Инженерно-техническая</option>
+                        <option value="ocenka">Оценочная</option>
+                        <option value="stroitel">Строительно-техническая</option>
+                    </select>
+                </div>
+                <div class="modal_field">
+                    <label class="modal_label" for="modal_phone">Номер телефона</label>
+                    <input class="modal_input" type="tel" id="modal_phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="modal_field">
+                    <label class="modal_label" for="modal_email">E-mail</label>
+                    <input class="modal_input" type="email" id="modal_email" name="email" placeholder="example@mail.ru" required>
+                </div>
+                <button type="submit" class="modal_submit">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    // ===== МОБИЛЬНОЕ МЕНЮ =====
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
+
+    // ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ =====
+    const themeToggle = document.getElementById('themeToggle');
+    const iconSun = document.querySelector('.icon-sun');
+    const iconMoon = document.querySelector('.icon-moon');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-theme');
+        iconSun.style.display = 'none';
+        iconMoon.style.display = 'block';
+    }
+
+    themeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-theme');
+        if (body.classList.contains('dark-theme')) {
+            localStorage.setItem('theme', 'dark');
+            iconSun.style.display = 'none';
+            iconMoon.style.display = 'block';
+        } else {
+            localStorage.setItem('theme', 'light');
+            iconSun.style.display = 'block';
+            iconMoon.style.display = 'none';
+        }
+    });
+
+    // ===== МОДАЛЬНОЕ ОКНО =====
+    const modal = document.getElementById('applicationModal');
+    const modalClose = document.getElementById('modalClose');
+    const applicationButtons = document.querySelectorAll('.podatu');
+    const applicationForm = document.getElementById('applicationForm');
+
+    applicationButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    modalClose.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
+    const phoneInput = document.getElementById('modal_phone');
+    phoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+            if (value[0] === '7' || value[0] === '8') value = value.substring(1);
+            let formattedValue = '+7';
+            if (value.length > 0) formattedValue += ' (' + value.substring(0, 3);
+            if (value.length >= 3) formattedValue += ') ' + value.substring(3, 6);
+            if (value.length >= 6) formattedValue += '-' + value.substring(6, 8);
+            if (value.length >= 8) formattedValue += '-' + value.substring(8, 10);
+            e.target.value = formattedValue;
+        }
+    });
+
+    applicationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+        applicationForm.reset();
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+    </script>
+
+</body>
+</html>
