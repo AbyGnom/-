@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — Экспертные решения</title>
+    <link rel="stylesheet" href="cabinet.css">
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="shapka">
+    <div class="container header-container">
+        <a href="index.html" class="logo">Экспертные<span>Решения</span></a>
+        
+        <!-- Навигация (на мобилках уезжает вправо) -->
+        <nav class="nav-menu" id="navMenu">
+            <ul class="linki">
+                <li class="linki_item"><a href="catalog.html" class="linki_txt">Услуги</a></li>
+                <li class="linki_item"><a href="index.html#info" class="linki_txt">О компании</a></li>
+                <li class="linki_item"><a href="#" class="linki_txt">Отзывы</a></li>
+                <li class="linki_item"><a href="index.html#contact" class="linki_txt">Контакты</a></li>
+            </ul>
+            <div class="buttons">
+                <button class="theme">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="#1A2332" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="join">Войти</button>
+                <button class="podat" id="openModal">Подать заявку</button>
+            </div>
+        </nav>
+
+        <!-- КНОПКА БУРГЕРА -->
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<!-- ЛИЧНЫЙ КАБИНЕТ -->
+<section class="cabinet">
+    <div class="container cabinet_content">
+        <h1 class="cabinet_title">Личный кабинет</h1>
+        
+        <div class="cabinet_grid">
+            <!-- Левая часть: Карточка -->
+            <div class="user_card">
+                <div class="user_avatar">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="white"/></svg>
+                </div>
+                <div class="user_name">Иван Иванов</div>
+                <div class="user_email">ivanov@mail.ru</div>
+                <div class="user_info">Дата рождения: 12.05.1998</div>
+                <div class="user_info">Телефон: +7(999)-677-52-42</div>
+            </div>
+
+            <!-- Правая часть -->
+            <div class="cabinet_right">
+                <!-- История -->
+                <div class="history_block">
+                    <div class="history_header">
+                        <h2 class="history_title">История заказов</h2>
+                        <select class="history_select">
+                            <option>По дате (новые)</option>
+                            <option>По дате (старые)</option>
+                            <option>По стоимости</option>
+                        </select>
+                    </div>
+                    
+                    <!-- ОБЕРТКА ДЛЯ ГОРИЗОНТАЛЬНОГО СКРОЛЛА НА ТЕЛЕФОНАХ -->
+                    <div class="table-wrapper">
+                        <table class="history_table">
+                            <thead>
+                                <tr>
+                                    <th>Дата оформления</th>
+                                    <th>Наименование услуги</th>
+                                    <th>Стоимость</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>10.10.2024</td><td>Оценка имущества</td><td>5 000 ₽</td></tr>
+                                <tr><td>10.10.2024</td><td>Оценка имущества</td><td>5 000 ₽</td></tr>
+                                <tr><td>10.10.2024</td><td>Оценка имущества</td><td>5 000 ₽</td></tr>
+                                <tr><td>10.10.2024</td><td>Оценка имущества</td><td>5 000 ₽</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Настройки -->
+                <div class="settings_block">
+                    <h2 class="settings_title">Настройки профиля</h2>
+                    
+                    <div class="settings_item">
+                        <h3 class="settings_block_title">Безопасность</h3>
+                        <button class="settings_btn">Изменить пароль</button>
+                    </div>
+
+                    <div class="settings_item">
+                        <h3 class="settings_block_title">Тема оформления</h3>
+                        <div class="theme_buttons">
+                            <button class="theme_btn">Тёмная</button>
+                            <button class="theme_btn">Светлая</button>
+                            <button class="theme_btn">Чёрная</button>
+                            <button class="theme_btn">Белая</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ФУТЕР -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="footer_top">
+            <div class="footer_column">
+                <h2 class="footer_h2">Экспертные Решения</h2>
+                <p class="footer_p">Независимая экспертиза и оценка имущества. Работаем с 2011 года.</p>
+                <p class="footer_p">г. Минусинск, ул. Абаканская, д. 39, офис 88</p>
+                <p class="footer_p">+7(952) 749-56-88</p>
+                <a href="mailto:expert_magera@mail.ru" class="footer_link">expert_magera@mail.ru</a>
+            </div>
+            <div class="footer_column">
+                <h2 class="footer_h2">Услуги</h2>
+                <a href="#" class="footer_link">Оценка недвижимости</a>
+                <a href="#" class="footer_link">Автотехническая экспертиза</a>
+                <a href="#" class="footer_link">Судебная экспертиза</a>
+                <a href="#" class="footer_link">Оценка имущества</a>
+            </div>
+            <div class="footer_column">
+                <h2 class="footer_h2">Информация</h2>
+                <a href="#" class="footer_link">О компании</a>
+                <a href="#" class="footer_link">Лицензии</a>
+                <a href="#" class="footer_link">Цены</a>
+                <a href="#" class="footer_link">Вопросы и ответы</a>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p class="footer_p">© 2026 ЭкспертныеРешения. Все права защищены.</p>
+            <div class="footer_group">
+                <a href="#" class="footer_link">Политика конфиденциальности</a>
+                <a href="#" class="footer_link">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div class="modal" id="modal">
+    <div class="modal_content">
+        <button class="modal_close" id="closeModal">&times;</button>
+        <h2 class="modal_title">Подать заявку</h2>
+        <form class="modal_form">
+            <div class="modal_field">
+                <label class="modal_label">Выберите услугу</label>
+                <select class="modal_select" required>
+                    <option value="" disabled selected>Выберите из списка</option>
+                    <option>Товароведческая</option>
+                    <option>Пожаро-техническая</option>
+                    <option>Оценочная</option>
+                </select>
+            </div>
+            <div class="modal_field">
+                <label class="modal_label">Номер телефона</label>
+                <input type="tel" class="modal_input" placeholder="+7 (___) ___-__-__" required>
+            </div>
+            <div class="modal_field">
+                <label class="modal_label">E-mail</label>
+                <input type="email" class="modal_input" placeholder="example@mail.ru" required>
+            </div>
+            <button type="submit" class="modal_submit">Отправить заявку</button>
+        </form>
+    </div>
+</div>
+
+<!-- СКРИПТЫ -->
+<script>
+    // Логика бургер-меню
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('navMenu');
+    
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('lock'); // Блокировка скролла фона
+    });
+
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('.linki_txt').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('lock');
+        });
+    });
+
+    // Логика модального окна
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModal');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    openModalBtn.addEventListener('click', () => modal.style.display = 'flex');
+    closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+</script>
+
+</body>
+</html>
