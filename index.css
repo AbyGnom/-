@@ -1,0 +1,1139 @@
+@font-face {
+    font-family: 'InterBold';
+    src: url('fonts/inter/Inter\ Bold.otf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'InterSemi';
+    src: url('fonts/inter/Inter\ Semi\ Bold\ Regular.otf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'InterRegular';
+    src: url('fonts/inter/Inter\ Light\ Regular.otf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --content-left: clamp(215px, 3vw, 90px);
+    --page-gap: clamp(48px, 6vw, 96px);
+    --hero-max: 720px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+    font-family: 'InterRegular', sans-serif;
+    background-color: white;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== ШАПКА ===== */
+.shapka {
+    background-color: white;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1003;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.shapka .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 96px;
+}
+
+.logo {
+    font-family: 'InterBold';
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1;
+}
+.logo span {
+    font-size: 30px;
+}
+
+.links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.linki {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    list-style: none;
+    flex-wrap: nowrap;
+}
+
+.linki_item {
+    display: flex;
+    align-items: center;
+}
+
+.linki_txt {
+    text-decoration: none;
+    font-family: 'InterBold';
+    color: #1A2332;
+    font-size: 20px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.linki_txt:hover {
+    color: #2769FB;
+}
+
+/* ===== БУРГЕР-МЕНЮ ===== */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2769FB 0%, #1a5ae0 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(39, 105, 251, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(39, 105, 251, 0.4);
+}
+
+.mobile-menu-toggle:active {
+    transform: scale(0.95);
+}
+
+.burger-line {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: absolute;
+}
+
+.burger-line:nth-child(1) {
+    transform: translateY(-7px);
+}
+
+.burger-line:nth-child(2) {
+    transform: translateY(0);
+}
+
+.burger-line:nth-child(3) {
+    transform: translateY(7px);
+}
+
+/* Анимация бургера в крестик */
+.mobile-menu-toggle.active .burger-line:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.mobile-menu-toggle.active .burger-line:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.mobile-menu-toggle.active {
+    background: linear-gradient(135deg, #ff4757 0%, #ff3838 100%);
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+/* Оверлей для мобильного меню — БЕЗ backdrop-filter */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.menu-overlay.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    min-height: 320px;
+    max-height: 780px;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.backblur {
+    display: flex;
+    position: absolute;
+    top: clamp(20px, 8vw, 140px);
+    left: var(--content-left);
+    flex-direction: column;
+    gap: 24px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: min(var(--hero-max), calc(100% - var(--content-left) - 20px));
+    max-width: var(--hero-max);
+    padding: clamp(20px, 3vw, 40px);
+    border-radius: 33px;
+    z-index: 2;
+}
+
+.blurH1 {
+    font-family: 'InterBold';
+    color: white;
+    font-size: clamp(26px, 4vw, 50px);
+    line-height: 1.1;
+    max-width: 100%;
+}
+
+.blurH2 {
+    font-family: 'InterRegular';
+    color: white;
+    font-size: clamp(16px, 2vw, 25px);
+    font-weight: 200;
+    line-height: 1.4;
+    max-width: 100%;
+}
+
+/* ===== УСЛУГИ ===== */
+.plusi {
+    display: flex;
+    flex-direction: column;
+    background-color: #1A2332;
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.plusi .container {
+    padding-right: 440px;
+}
+
+.plusi_tittle {
+    font-family: 'InterBold';
+    color: white;
+    font-size: 38px;
+    padding-bottom: 120px;
+    text-align: left;
+}
+
+.columns {
+    display: flex;
+    gap: 520px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    flex: 1;
+    min-width: 0;
+}
+
+.column_object {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    min-width: 0;
+}
+
+.column_object svg {
+    flex-shrink: 0;
+}
+
+.column_txt {
+    font-family: 'InterSemi';
+    font-size: 20px;
+    line-height: 1.25;
+    color: white;
+    min-width: 0;
+}
+
+/* ===== ПОЧЕМУ ВЫБИРАЮТ НАС ===== */
+.why {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    background-color: #ffffff;
+    padding-left: var(--content-left);
+    padding-right: 20px;
+}
+
+.why_tittle {
+    font-family: 'InterBold';
+    color: #1A2332;
+    font-size: 38px;
+}
+
+.why_p {
+    font-family: 'InterRegular';
+    color: #1A2332;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 1.5;
+}
+
+.why_h3 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.why_h3_object {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.why_h3_h3 {
+    font-family: 'InterBold';
+    color: #1A2332;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+/* ===== КАРТА ===== */
+.map-section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+}
+
+.map-container {
+    max-width: 1460px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.map-info {
+    flex: 0 0 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px;
+    background-color: #1A2332;
+    border-radius: 20px;
+    color: white;
+}
+
+.map-title {
+    font-family: 'InterBold';
+    font-size: 32px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.map-address,
+.map-phone,
+.map-email,
+.map-hours {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.map-address svg,
+.map-phone svg,
+.map-email svg,
+.map-hours svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.map-address p,
+.map-phone p,
+.map-email p,
+.map-hours p {
+    font-family: 'InterRegular';
+    font-size: 17px;
+    color: #e0e4ea;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.map-frame {
+    flex: 1;
+    position: relative;
+    min-height: 460px;
+    height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    display: block;
+    border: none;
+    border-radius: 20px;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    background-color: #1A2332;
+}
+
+.footer_h2 {
+    font-family: 'InterSemi';
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.footer_p {
+    font-family: 'InterRegular';
+    color: white;
+    font-size: 17px;
+    font-weight: 200;
+}
+
+.footer_column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.footer_top {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    border-bottom: 1px solid white;
+}
+
+.footer_bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.footer_group {
+    display: flex;
+    padding-top: 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer_link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer_link:hover {
+    color: #2769FB;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal_content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px 60px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.modal_close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #929292;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal_title {
+    font-family: 'InterBold';
+    font-size: 32px;
+    color: #1A2332;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.modal_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal_field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal_label {
+    font-family: 'InterSemi';
+    font-size: 16px;
+    color: #1A2332;
+}
+
+.modal_select,
+.modal_input {
+    font-family: 'InterRegular';
+    font-size: 16px;
+    padding: 14px 18px;
+    border: 2px solid #e0e4ea;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f5f7fa;
+    color: #1A2332;
+}
+
+.modal_submit {
+    font-family: 'InterBold';
+    font-size: 20px;
+    color: white;
+    background-color: #2769FB;
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+
+/* ===== АДАПТИВ ===== */
+
+/* Планшеты */
+@media (max-width: 1200px) {
+    .plusi .container {
+        padding-right: 40px;
+    }
+
+    .columns {
+        gap: 60px;
+    }
+
+    .why {
+        padding-left: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .shapka .container {
+        min-height: 80px;
+    }
+
+    .logo,
+    .logo span {
+        font-size: 26px;
+    }
+
+    .linki {
+        gap: 40px;
+    }
+
+    .linki_txt {
+        font-size: 17px;
+    }
+
+    .slider {
+        aspect-ratio: 16 / 8;
+        min-height: 360px;
+    }
+
+    .backblur {
+        width: min(620px, calc(100% - var(--content-left) - 20px));
+    }
+
+    .plusi_tittle,
+    .why_tittle {
+        font-size: 32px;
+    }
+
+    .columns {
+        gap: 32px;
+    }
+
+    .column {
+        gap: 48px;
+    }
+
+    .column_txt {
+        font-size: 18px;
+    }
+
+    .why_p {
+        font-size: 20px;
+    }
+
+    .why_h3_h3 {
+        font-size: 20px;
+    }
+
+    .map-container {
+        flex-direction: column;
+    }
+
+    .map-info {
+        flex: none;
+        padding: 30px;
+    }
+
+    .map-frame {
+        min-height: 350px;
+    }
+}
+
+/* Планшеты вертикальные и большие телефоны */
+@media (max-width: 900px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* Меню создаёт отдельный stacking context и находится ВЫШЕ оверлея */
+    .links {
+        position: fixed;
+        top: 0;
+        right: -320px;
+        width: 300px;
+        height: 100vh;
+        height: 100dvh;
+        background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001;
+        padding: 100px 30px 40px;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.25);
+        overflow-y: auto;
+        justify-content: flex-start;
+        isolation: isolate;
+    }
+
+    .links.active {
+        right: 0;
+    }
+
+    .linki {
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .linki_item {
+        width: 100%;
+        border-bottom: 1px solid rgba(39, 105, 251, 0.1);
+    }
+
+    .linki_item:last-child {
+        border-bottom: none;
+    }
+
+    .linki_txt {
+        display: block;
+        font-size: 18px;
+        padding: 18px 10px;
+        width: 100%;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .linki_txt::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #2769FB, transparent);
+        transition: width 0.3s ease;
+    }
+
+    .linki_txt:hover::after {
+        width: 100%;
+    }
+
+    .linki_txt:hover {
+        color: #2769FB;
+        padding-left: 20px;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 768px) {
+    .shapka .container {
+        min-height: 70px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .logo span {
+        font-size: 22px;
+    }
+
+    .links {
+        width: 280px;
+        right: -300px;
+        padding: 90px 24px 30px;
+    }
+
+    .mobile-menu-toggle {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+    }
+
+    .burger-line {
+        width: 20px;
+        height: 2px;
+    }
+
+    .burger-line:nth-child(1) {
+        transform: translateY(-6px);
+    }
+
+    .burger-line:nth-child(3) {
+        transform: translateY(6px);
+    }
+
+    .slider {
+        aspect-ratio: 16 / 12;
+        min-height: 420px;
+    }
+
+    .backblur {
+        left: 16px;
+        right: 16px;
+        width: auto;
+        max-width: none;
+        padding: 20px 16px;
+        gap: 16px;
+        border-radius: 24px;
+    }
+
+    .blurH1 {
+        font-size: 28px;
+    }
+
+    .blurH2 {
+        font-size: 16px;
+    }
+
+    .plusi {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .plusi .container {
+        padding: 0 20px;
+    }
+
+    .plusi_tittle {
+        font-size: 28px;
+        padding-bottom: 50px;
+    }
+
+    .columns {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .column {
+        gap: 28px;
+    }
+
+    .column_object {
+        gap: 14px;
+        align-items: flex-start;
+    }
+
+    .column_txt {
+        font-size: 17px;
+    }
+
+    .why {
+        padding-top: 60px;
+        padding-bottom: 70px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .why_tittle {
+        font-size: 28px;
+    }
+
+    .why_p {
+        font-size: 17px;
+    }
+
+    .why_h3_h3 {
+        font-size: 17px;
+    }
+
+    .footer_top {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .footer_column {
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+
+    .modal_content {
+        padding: 40px 22px;
+        width: 95%;
+    }
+
+    .modal_title {
+        font-size: 26px;
+    }
+
+    .map-section {
+        padding: 50px 16px;
+    }
+
+    .map-container {
+        gap: 20px;
+    }
+
+    .map-info {
+        padding: 24px;
+        gap: 18px;
+    }
+
+    .map-title {
+        font-size: 26px;
+    }
+
+    .map-address p,
+    .map-phone p,
+    .map-email p,
+    .map-hours p {
+        font-size: 15px;
+    }
+
+    .map-frame {
+        width: 100%;
+        height: 350px;
+        min-height: 350px;
+        border-radius: 20px;
+    }
+
+    .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 480px) {
+    .shapka .container {
+        min-height: 64px;
+        gap: 12px;
+    }
+
+    .logo,
+    .logo span {
+        font-size: 18px;
+    }
+
+    .links {
+        width: 100%;
+        right: -100%;
+        padding: 80px 20px 30px;
+    }
+
+    .mobile-menu-toggle {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+    }
+
+    .burger-line {
+        width: 18px;
+        height: 2px;
+    }
+
+    .burger-line:nth-child(1) {
+        transform: translateY(-5px);
+    }
+
+    .burger-line:nth-child(3) {
+        transform: translateY(5px);
+    }
+
+    .slider {
+        aspect-ratio: 4 / 5;
+        min-height: 360px;
+    }
+
+    .backblur {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        padding: 16px 14px;
+        gap: 12px;
+        border-radius: 18px;
+    }
+
+    .blurH1 {
+        font-size: 22px;
+    }
+
+    .blurH2 {
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .plusi_tittle,
+    .why_tittle {
+        font-size: 24px;
+    }
+
+    .column_txt {
+        font-size: 15px;
+    }
+
+    .why_p {
+        font-size: 15px;
+    }
+
+    .why_h3_h3 {
+        font-size: 15px;
+    }
+
+    .modal_content {
+        padding: 30px 18px;
+    }
+
+    .modal_title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .modal_submit {
+        font-size: 17px;
+        padding: 14px;
+    }
+
+    .footer_group {
+        gap: 14px;
+    }
+
+    .linki_txt {
+        font-size: 16px;
+        padding: 16px 8px;
+    }
+    .map-frame {
+        height: 280px;
+        min-height: 280px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+    .logo,
+    .logo span {
+        font-size: 16px;
+    }
+
+    .mobile-menu-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .burger-line {
+        width: 16px;
+    }
+
+    .blurH1 {
+        font-size: 20px;
+    }
+
+    .blurH2 {
+        font-size: 13px;
+    }
+}
+/* ===== КНОПКА ПРОКРУТКИ ВВЕРХ ===== */
+.scroll-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2769FB 0%, #1a5ae0 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(39, 105, 251, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease;
+    padding: 0;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, #1a5ae0 0%, #1447b8 100%);
+    box-shadow: 0 8px 25px rgba(39, 105, 251, 0.55);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.scroll-to-top:active {
+    transform: translateY(0) scale(0.95);
+    box-shadow: 0 4px 15px rgba(39, 105, 251, 0.4);
+}
+
+.scroll-to-top svg {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover svg {
+    transform: translateY(-2px);
+}
+
+/* Адаптив кнопки */
+@media (max-width: 1024px) {
+    .scroll-to-top {
+        width: 56px;
+        height: 56px;
+        right: 24px;
+        bottom: 24px;
+    }
+    .scroll-to-top svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        width: 52px;
+        height: 52px;
+        right: 20px;
+        bottom: 20px;
+    }
+    .scroll-to-top svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        width: 48px;
+        height: 48px;
+        right: 16px;
+        bottom: 16px;
+    }
+    .scroll-to-top svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .scroll-to-top {
+        width: 44px;
+        height: 44px;
+        right: 14px;
+        bottom: 14px;
+    }
+    .scroll-to-top svg {
+        width: 18px;
+        height: 18px;
+    }
+}
